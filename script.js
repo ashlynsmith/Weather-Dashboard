@@ -2,12 +2,12 @@
 
     var APIKey = "ab0ed5c1a7f4f0e52a36a67dd9732415";
     var q = "";
-    //Date and time formate for header
+    //Date and time 
     var currentDate = dayjs().format(' dddd, MMM DD YYYY || HH:mm:ss');
     $("#currentDay").text(currentDate);
     let storageHistory = JSON.parse(window.localStorage.getItem("history")) 
     $("#search-button").on("click", function (event) {
-        // Preventing the button from trying to submit the form
+        
         event.preventDefault();
         let serachinput = $("#city-input").val()
         getWeather(serachinput)
@@ -33,10 +33,10 @@
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + q + "&units=imperial&appid=" + APIKey;
         
         $.ajax({
-            // gets the current weather info
+            // weather information
             url: queryURL,
             method: "GET",
-            error: (err => { //If API through error then alert 
+            error: (err => { 
                 alert("Your city was not found. Check your spelling or enter a city code")
                 return;
             })
@@ -62,10 +62,10 @@
         let queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
         
         $.ajax({
-            // gets the current weather info
+            // weather info
             url: queryURL,
             method: "GET",
-            error: (err => { //If API through error then alert 
+            error: (err => { 
                 alert("Your city was not found. Check your spelling or enter a city code")
                 return;
             })
